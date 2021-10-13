@@ -14,7 +14,7 @@ public class DeckOfCards {
 		String[] ranks = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace" };
 		DeckOfCards deckOfCards = new DeckOfCards();
 		String[][] cards = deckOfCards.createCards(suits, ranks, cardsCollection);
-		deckOfCards.showCards(cards);
+		deckOfCards.checkUnqiue(cards);
 	}
 
 	/**
@@ -34,13 +34,17 @@ public class DeckOfCards {
 	}
 	
 	/**
-	 * Display all cards
+	 * checkUnqiue cards
 	 * */
-	public void showCards(String[][] cards){
+	public void checkUnqiue(String[][] cards){
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 13; j++) {
 
-				 System.out.println(cards[i][j]+"");
+				  if(cards[i]==cards[j]){
+					  
+					  System.out.println("Card already Present");
+					  
+				  }
 			}
 			
 
