@@ -10,6 +10,7 @@ public class DeckOfCards {
 		CardsPlay play = new CardsPlay(playerCount);
 		play.generateCards();
 		play.addPlayer();
+		play.setPlayerSequence();
 		play.distributeCards();
 		play.printCardList();
 	}
