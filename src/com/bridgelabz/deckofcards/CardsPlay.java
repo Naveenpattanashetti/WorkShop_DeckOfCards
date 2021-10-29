@@ -28,9 +28,9 @@ public class CardsPlay {
 
 	public void printCards() {
 
-		System.out.print("Cards : ");
+		System.out.println("Cards ");
 		for (int i = 0; i < cardsArr.size(); i++) {
-			System.out.print(" " + cardsArr.get(i) + "\n");
+			System.out.print(" " + cardsArr.get(i) + " ");
 		}
 	}
 
@@ -48,9 +48,26 @@ public class CardsPlay {
 		}
 	}
 
-	public String getCards() {
+	public void shuffleCards() {
+		for (int i = 0; i < cardsArr.size(); i++) {
+			int min = 0;
+			int max = cardsArr.size() - 1;
+			int position = (int) (Math.random() * (max - min + 1) + min);
+			int newPosition = (position - i);
+			if (newPosition < 0 || newPosition > 52)
+				newPosition = 0;
+			String temp = cardsArr.get(newPosition);
+			cardsArr.set(newPosition, cardsArr.get(i));
+			cardsArr.set(i, temp);
+		}
+	}
 
-		int position = (int) (Math.random());
+	public String getCards() {
+		int min = 0;
+		int max = cardsArr.size() - 1;
+		int position = (int) (Math.random() * (max - min + 1) + min);
+		System.out.print("\n Size : " + cardsArr.size() + ", position : " + position);
+
 		String returnValue = cardsArr.get(position);
 		cardsArr.remove(position);
 		return returnValue;
@@ -61,7 +78,7 @@ public class CardsPlay {
 			for (Player playerObj : playerList) {
 				// adding each card in cardList of each player
 				playerObj.setCardList(getCards());
-
+				shuffleCards();
 			}
 		}
 	}
